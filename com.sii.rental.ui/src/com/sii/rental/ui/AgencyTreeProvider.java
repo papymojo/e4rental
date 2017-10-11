@@ -21,9 +21,12 @@ public class AgencyTreeProvider implements ITreeContentProvider {
 	public Object[] getChildren(Object parentElement) {
 		// TODO Auto-generated method stub
 		if (parentElement instanceof RentalAgency) {
-			return ((RentalAgency) parentElement).getCustomers().toArray();
+			RentalAgency a = (RentalAgency) parentElement;
+			return new Node[] {new Node(Node.CUSTOMERS,a),new Node(Node.RENTAL,a),new Node(Node.OBJECTS,a)};
+		} else if (parentElement instanceof Node) {
+			return ((Node) parentElement).getChildren();
 		}
-			return null;
+		return null;
 	}
 
 	@Override
@@ -39,6 +42,31 @@ public class AgencyTreeProvider implements ITreeContentProvider {
 		return true;
 	}
 
-
-
+	class Node {
+		private static final String CUSTOMERS = "Customers";
+		private static final String RENTAL = "Locations";
+		private static final String OBJECTS = "Objets à louer";
+		private String label;
+		private RentalAgency a;
+		public Node(String label, RentalAgency a) {
+			super();
+			this.label = label;
+			this.a = a;
+		}
+		public Object[] getChildren() {
+			if(label == CUSTOMERS) {
+				return a.getCustomers().toArray();
+			}
+			if(label == RENTAL) {
+				return a.getRentals().toArray();
+			}
+			if(label == OBJECTS) {
+				return a.getObjectsToRent().toArray();
+			}
+			return null;
+		}
+		public String toString() {
+			return label;
+		}
+	}
 }
