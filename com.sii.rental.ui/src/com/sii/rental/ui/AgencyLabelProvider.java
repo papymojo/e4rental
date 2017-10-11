@@ -1,5 +1,9 @@
 package com.sii.rental.ui;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
@@ -12,12 +16,22 @@ import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
 import com.opcoach.training.rental.RentalObject;
 
-public class AgencyLabelProvider extends LabelProvider implements IColorProvider{
+public class AgencyLabelProvider extends LabelProvider implements IColorProvider,RentalUIConstants{
 
+	@Inject @Named(RENTAL_UI_IMG_REGISTRY)
+	private ImageRegistry registry;
 	
 	@Override
 	public Image getImage(Object element) {
-		// TODO Auto-generated method stub
+		if (element instanceof RentalAgency)
+			return registry.get(IMG_AGENCY);
+		else if (element instanceof Customer)
+			return registry.get(IMG_CUSTOMER);
+		else if (element instanceof RentalObject)
+			return registry.get(IMG_RENTAL_OBJECT);
+		else if (element instanceof Rental)
+			return registry.get(IMG_RENTAL);
+		// TODO Auto-generated method stub		
 		return null;
 	}
 
