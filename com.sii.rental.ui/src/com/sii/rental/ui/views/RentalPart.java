@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 
 import com.opcoach.training.rental.Rental;
+import com.opcoach.training.rental.RentalAgency;
 import com.sii.rental.core.RentalCoreActivator;
 
 public class RentalPart {
@@ -21,7 +22,7 @@ public class RentalPart {
 	private Label client;
 
 	@PostConstruct
-	public void createContent(Composite parent) {
+	public void createContent(Composite parent,RentalAgency a) {
 		parent.setLayout(new GridLayout(1, false));
 
 		Group infoGroup = new Group(parent, SWT.NONE);
@@ -35,7 +36,6 @@ public class RentalPart {
 		gd.horizontalSpan = 2;
 		gd.horizontalAlignment = SWT.FILL;
 		rentedObjectLabel.setLayoutData(gd);
-		new Label(infoGroup, SWT.NONE);
 
 		Label nom = new Label(infoGroup, SWT.NONE);
 		nom.setText("nom :");
@@ -59,7 +59,7 @@ public class RentalPart {
 
 		dateFin = new Label(datesGroup, SWT.NONE);
 		dateFin.setText("New Label");
-		setRental(RentalCoreActivator.getAgency().getRentals().get(0));
+		setRental(a.getRentals().get(0));
 	}
 
 	@Focus
@@ -69,5 +69,8 @@ public class RentalPart {
 
 	public void setRental(Rental r) {
 		rentedObjectLabel.setText(r.getRentedObject().getName());
+		client.setText(r.getCustomer().getFirstName()+ " " +r.getCustomer().getLastName());
+		dateDebut.setText(r.getStartDate().toString());
+		dateFin.setText(r.getEndDate().toString());
 	}
 }
