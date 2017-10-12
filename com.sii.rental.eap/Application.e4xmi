@@ -3,7 +3,15 @@
   <children xsi:type="basic:TrimmedWindow" xmi:id="_6wlLccgZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.window.main" selectedElement="_6wlLksgZEeSyMNYR5xypkQ" label="Eclipse 4 RCP Application" width="800" height="700">
     <children xsi:type="basic:PartSashContainer" xmi:id="_6wlLksgZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.partsashcontainer.sample" selectedElement="_6wlLk8gZEeSyMNYR5xypkQ" horizontal="true">
       <children xsi:type="basic:PartStack" xmi:id="_6wlLk8gZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.partstack.sample" containerData="40">
-        <children xsi:type="basic:Part" xmi:id="_ZTt0cK6IEeeJa5OjSrzwgg" elementId="com.sii.rental.eap.part.agencypart" contributionURI="bundleclass://com.sii.rental.ui/com.sii.rental.ui.views.AgencyPart" label="Agency Part"/>
+        <children xsi:type="basic:Part" xmi:id="_ZTt0cK6IEeeJa5OjSrzwgg" elementId="com.sii.rental.eap.part.agencypart" contributionURI="bundleclass://com.sii.rental.ui/com.sii.rental.ui.views.AgencyPart" label="Agency Part">
+          <menus xmi:id="_XKxGgK8uEeekX5W6SECbPA" elementId="com.sii.rental.eap.menu.0">
+            <tags>ViewMenu</tags>
+            <children xsi:type="menu:HandledMenuItem" xmi:id="_FgVsIK8uEeekX5W6SECbPA" elementId="com.sii.rental.eap.handledmenuitem.0" iconURI="platform:/plugin/com.sii.rental.eap/icons/sample.png" command="_liCOYK8rEeekX5W6SECbPA"/>
+          </menus>
+          <menus xsi:type="menu:PopupMenu" xmi:id="_iCEAMK8uEeekX5W6SECbPA" elementId="com.sii.rental.eap.popupmenu.0" iconURI="platform:/plugin/com.sii.rental.eap/icons/sample.png">
+            <children xsi:type="menu:HandledMenuItem" xmi:id="_iqhHUK8uEeekX5W6SECbPA" elementId="com.sii.rental.eap.handledmenuitem.1" iconURI="platform:/plugin/com.sii.rental.eap/icons/sample.png" command="_liCOYK8rEeekX5W6SECbPA"/>
+          </menus>
+        </children>
       </children>
       <children xsi:type="basic:PartStack" xmi:id="_qy9X4K6bEeeJa5OjSrzwgg" elementId="com.sii.rental.eap.partstack.0" containerData="60">
         <children xsi:type="basic:Part" xmi:id="_6wlLlMgZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.part.sample" contributionURI="bundleclass://com.sii.rental.ui/com.sii.rental.ui.views.RentalPart" label="Rental Part"/>
@@ -17,12 +25,14 @@
       </children>
       <children xsi:type="menu:Menu" xmi:id="_6wlLjsgZEeSyMNYR5xypkQ" elementId="help" label="Help">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_6wlLj8gZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.handleditem.about" label="About" command="_6wlLhsgZEeSyMNYR5xypkQ"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_tNYekK8tEeekX5W6SECbPA" elementId="com.sii.rental.eap.handledmenuitem.helloworld" label="HelloWorld" iconURI="platform:/plugin/com.sii.rental.eap/icons/sample.png" command="_liCOYK8rEeekX5W6SECbPA"/>
       </children>
     </mainMenu>
     <trimBars xmi:id="_6wlLlcgZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.trimbar.top">
       <children xsi:type="menu:ToolBar" xmi:id="_6wlLlsgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.main.toolbar">
         <children xsi:type="menu:HandledToolItem" xmi:id="_6wlLl8gZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.handleditem.trimbar.top.open" iconURI="platform:/plugin/com.sii.rental.eap/icons/sample.png" command="_6wlLgMgZEeSyMNYR5xypkQ"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_6wlLmMgZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.handleditem.trimbar.top.save" iconURI="platform:/plugin/com.sii.rental.eap/icons/save_edit.png" command="_6wlLg8gZEeSyMNYR5xypkQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Ajt2kK8tEeekX5W6SECbPA" elementId="com.sii.rental.eap.handledtoolitem.helloworld" label="HelloWorld" iconURI="platform:/plugin/com.sii.rental.eap/icons/sample.png" command="_liCOYK8rEeekX5W6SECbPA"/>
       </children>
     </trimBars>
   </children>
@@ -30,6 +40,7 @@
   <handlers xmi:id="_6wlLgcgZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.handler.openCommand" contributionURI="bundleclass://com.sii.rental.eap/com.sii.rental.eap.handlers.OpenHandler" command="_6wlLgMgZEeSyMNYR5xypkQ"/>
   <handlers xmi:id="_6wlLhMgZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.handler.saveCommand" contributionURI="bundleclass://com.sii.rental.eap/com.sii.rental.eap.handlers.SaveHandler" command="_6wlLg8gZEeSyMNYR5xypkQ"/>
   <handlers xmi:id="_6wlLh8gZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.handler.aboutCommand" contributionURI="bundleclass://com.sii.rental.eap/com.sii.rental.eap.handlers.AboutHandler" command="_6wlLhsgZEeSyMNYR5xypkQ"/>
+  <handlers xmi:id="_1HncIK8rEeekX5W6SECbPA" elementId="com.sii.rental.eap.handler.0" contributionURI="bundleclass://com.sii.rental.eap/com.sii.rental.eap.handlers.HelloHandler" command="_liCOYK8rEeekX5W6SECbPA"/>
   <bindingTables xmi:id="_6wlLfsgZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.bindingtable" bindingContext="_6wlLecgZEeSyMNYR5xypkQ">
     <bindings xmi:id="_6wlLf8gZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.keybinding.m1q" keySequence="M1+Q" command="_6wlLfMgZEeSyMNYR5xypkQ"/>
     <bindings xmi:id="_6wlLgsgZEeSyMNYR5xypkQ" elementId="com.sii.rental.eap.keybinding.m1o" keySequence="M1+O" command="_6wlLgMgZEeSyMNYR5xypkQ"/>
@@ -40,10 +51,17 @@
     <children xmi:id="_6wlLesgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
     <children xmi:id="_6wlLe8gZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
   </rootContext>
+  <menuContributions xmi:id="_er-YsK8vEeekX5W6SECbPA" elementId="com.sii.rental.eap.menucontribution.0" positionInParent="after=additions" parentId="com.sii.rental.eap.popupmenu.0">
+    <children xsi:type="menu:HandledMenuItem" xmi:id="_fErzoK8vEeekX5W6SECbPA" elementId="" label="HelloWorld par contrib" iconURI="platform:/plugin/com.sii.rental.eap/icons/sample.png" command="_liCOYK8rEeekX5W6SECbPA"/>
+  </menuContributions>
+  <menuContributions xmi:id="_Ok8OQK8wEeekX5W6SECbPA" elementId="com.sii.rental.eap.menucontribution.1" parentId="popup">
+    <children xsi:type="menu:HandledMenuItem" xmi:id="_PB7sQK8wEeekX5W6SECbPA" elementId="com.sii.rental.eap.handledmenuitem.2" command="_liCOYK8rEeekX5W6SECbPA"/>
+  </menuContributions>
   <commands xmi:id="_6wlLfMgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.file.exit" commandName="quitCommand"/>
   <commands xmi:id="_6wlLgMgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.file.open" commandName="openCommand"/>
   <commands xmi:id="_6wlLg8gZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.file.save" commandName="saveCommand"/>
   <commands xmi:id="_6wlLhsgZEeSyMNYR5xypkQ" elementId="org.eclipse.ui.help.aboutAction" commandName="aboutCommand"/>
+  <commands xmi:id="_liCOYK8rEeekX5W6SECbPA" elementId="com.sii.rental.eap.command.helloworld" commandName="helloWorld"/>
   <addons xmi:id="_6wlLcsgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_6wlLc8gZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_6wlLdMgZEeSyMNYR5xypkQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
