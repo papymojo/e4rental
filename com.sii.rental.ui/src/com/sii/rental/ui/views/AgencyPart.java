@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.core.di.extensions.Preference;
 import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -19,12 +22,15 @@ import org.eclipse.swt.widgets.Composite;
 import com.opcoach.training.rental.RentalAgency;
 import com.sii.rental.ui.AgencyLabelProvider;
 import com.sii.rental.ui.AgencyTreeProvider;
+import com.sii.rental.ui.RentalUIConstants;
 
-public class AgencyPart {
+public class AgencyPart implements RentalUIConstants{
+
+	private TreeViewer tv;
 
 	@PostConstruct
 	public void postConstruct(Composite parent,RentalAgency a,EMenuService ms,ESelectionService esel, IEclipseContext ctx) {
-		TreeViewer tv = new TreeViewer(parent);
+		tv = new TreeViewer(parent);
 		tv.setContentProvider(new AgencyTreeProvider());
 		AgencyLabelProvider p = ContextInjectionFactory.make(AgencyLabelProvider.class,ctx);
 		tv.setLabelProvider(p);
@@ -42,5 +48,14 @@ public class AgencyPart {
 		});
 		tv.expandAll();
 	}
+	
+	@Inject @Optional
+	public void refreshTree(@Preference(value=PREF_CUSTOMER_COLOR) String cCustomer,
+			@Preference(value=PREF_RENTAL_COLOR) String cRental,
+			@Preference(value=PREF_RENTAL_OBJECT_COLOR) String cObject) {
+		if (tv != null)
+			tv.refresh();
+	}
+	
 
 }

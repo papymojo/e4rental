@@ -3,7 +3,11 @@ package com.sii.rental.ui;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.resource.ColorRegistry;
 import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
@@ -20,6 +24,9 @@ public class AgencyLabelProvider extends LabelProvider implements IColorProvider
 
 	@Inject @Named(RENTAL_UI_IMG_REGISTRY)
 	private ImageRegistry registry;
+	
+	@Inject @Named(RENTAL_UI_PREF_STORE)
+	private IPreferenceStore pref;
 	
 	@Override
 	public Image getImage(Object element) {
@@ -52,13 +59,11 @@ public String getText(Object element) {
 @Override
 public Color getForeground(Object element) {
 	if (element instanceof Customer) {
-		return Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
+		return getAColor(pref.getString(PREF_CUSTOMER_COLOR));
 	} else if (element instanceof Rental) {
-		return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
+		return getAColor(pref.getString(PREF_RENTAL_COLOR));
 	} else if (element instanceof RentalObject) {
-		return Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
-	} else if (element instanceof RentalAgency) {
-		return Display.getCurrent().getSystemColor(SWT.COLOR_MAGENTA);
+		return getAColor(pref.getString(PREF_RENTAL_OBJECT_COLOR));
 	}
 	return null;
 }
@@ -69,4 +74,13 @@ public Color getBackground(Object element) {
 	return null;
 }
 
+private Color getAColor(String rgbKey) {
+	ColorRegistry colorRegistry = JFaceResources.getColorRegistry();
+	Color col = colorRegistry.get(rgbKey);
+	if(col == null) {
+		colorRegistry.put(rgbKey, StringConverter.asRGB(rgbKey));
+		col = colorRegistry.get(rgbKey);
+	}
+	return col;
+}
 }
