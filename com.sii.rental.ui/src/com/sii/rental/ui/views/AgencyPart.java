@@ -31,7 +31,7 @@ public class AgencyPart {
 		Collection<RentalAgency> datas = new ArrayList<>();
 		datas.add(a);
 		ms.registerContextMenu(tv.getControl(), "com.sii.rental.eap.popupmenu.0");
-		tv.setInput(datas);
+		tv.setInput(datas); 
 		tv.addSelectionChangedListener(new ISelectionChangedListener() {
 			
 			@Override
