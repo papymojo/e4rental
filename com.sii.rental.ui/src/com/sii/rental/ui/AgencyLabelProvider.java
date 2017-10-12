@@ -77,7 +77,7 @@ public Color getBackground(Object element) {
 private Color getAColor(String rgbKey) {
 	ColorRegistry colorRegistry = JFaceResources.getColorRegistry();
 	Color col = colorRegistry.get(rgbKey);
-	if(col == null) {
+	if(col == null && !rgbKey.isEmpty()) {
 		colorRegistry.put(rgbKey, StringConverter.asRGB(rgbKey));
 		col = colorRegistry.get(rgbKey);
 	}
