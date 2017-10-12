@@ -53,7 +53,7 @@ public class AgencyPart implements RentalUIConstants{
 	public void refreshTree(@Preference(value=PREF_CUSTOMER_COLOR) String cCustomer,
 			@Preference(value=PREF_RENTAL_COLOR) String cRental,
 			@Preference(value=PREF_RENTAL_OBJECT_COLOR) String cObject) {
-		if (tv != null)
+		if (tv != null && !tv.getControl().isDisposed())
 			tv.refresh();
 	}
 	
