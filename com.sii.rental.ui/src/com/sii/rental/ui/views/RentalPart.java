@@ -45,6 +45,7 @@ public class RentalPart {
 		nom.setText("nom :");
 
 		client = new Label(infoGroup, SWT.NONE);
+		client.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		client.setText("New Label");
 		new Label(infoGroup, SWT.NONE);
 
