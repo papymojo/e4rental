@@ -16,7 +16,9 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.core.di.extensions.Preference;
 import org.eclipse.e4.ui.di.UIEventTopic;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.IColorProvider;
@@ -35,9 +37,13 @@ public class RentalAddon implements RentalUIConstants {
 	public void init(IEclipseContext ctx, IExtensionRegistry reg) {
 		ctx.set(RentalAgency.class, RentalAgencyGenerator.createSampleAgency());
 		ctx.set(RENTAL_UI_IMG_REGISTRY, getLocalImageRegistry());
-		ctx.set(RENTAL_UI_PREF_STORE, new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID));
+		IPreferenceStore prefStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID);
+		ctx.set(RENTAL_UI_PREF_STORE,prefStore );
 		printxmladdon(reg);
+		ctx.set(PALETTE_MANAGER,palettemanager);
 		initPalette(reg, ctx);
+	    String palId = prefStore.getString(PREF_PALETTE);
+		ctx.set(Palette.class, palettemanager.get(palId));
 	}
 
 	private void initPalette(IExtensionRegistry reg, IEclipseContext ctx) {
@@ -53,9 +59,9 @@ public class RentalAddon implements RentalUIConstants {
 					IColorProvider p = (IColorProvider) ContextInjectionFactory.make(clazz, ctx);
 					Palette pal = new Palette();
 					pal.setId(elt.getAttribute("id"));
-					pal.setName("name");
+					pal.setName(elt.getAttribute("name"));
 					pal.setProvider(p);
-					palettemanager.put(elt.getAttribute("id"),pal);
+					palettemanager.put(pal.getId(),pal);
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -65,7 +71,6 @@ public class RentalAddon implements RentalUIConstants {
 				}
 			}
 		}
-
 	}
 
 	public void printxmladdon(IExtensionRegistry reg) {
@@ -107,4 +112,12 @@ public class RentalAddon implements RentalUIConstants {
 	void reactOnCopy(@UIEventTopic("rental/copy") Customer c) {
 		System.out.println(c.getDisplayName() + " copié");
 	}
+	
+	@Inject
+	public void changePalette(@Preference(value=PREF_PALETTE) String paletteId, IEclipseContext ctx) {
+		if(palettemanager !=null) {
+			ctx.set(Palette.class, palettemanager.get(paletteId));
+		}
+	}
+	
 }
