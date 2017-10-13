@@ -5,9 +5,10 @@
    <extension
          point="com.opcoach.e4.preferences.e4PreferencePages">
       <page
-            name="Colors Preference page"
+            category="com.sii.rental.ui.palettePref"
             class="com.sii.rental.ui.prefs.ColorPrefPage"
-            id="com.sii.rental.ui.colorprefs">
+            id="com.sii.rental.ui.colorprefs"
+            name="Colors Preference page">
       </page>
       <page
             class="com.sii.rental.ui.prefs.PalettePrefPage"
