@@ -3,7 +3,7 @@ Bundle-SymbolicName: com.sii.rental.core
 Export-Package: com.opcoach.training.rental,com.opcoach.training.renta
  l.core.helpers,com.sii.rental.core
 Bundle-Name: Core
-Bundle-Version: 1.0.0.201710131356
+Bundle-Version: 1.0.0.201710131423
 Bundle-ClassPath: lib/rental.jar,.
 Require-Bundle: org.eclipse.core.runtime,org.eclipse.emf.ecore;visibil
  ity:=reexport

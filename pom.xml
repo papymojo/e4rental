@@ -42,16 +42,16 @@
 						</artifact>
 					</target>
 					<environments>
-						<environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86_64</arch>
-						</environment>
+<!-- 						<environment> -->
+<!-- 							<os>macosx</os> -->
+<!-- 							<ws>cocoa</ws> -->
+<!-- 							<arch>x86_64</arch> -->
+<!-- 						</environment> -->
+<!-- 						<environment> -->
+<!-- 							<os>win32</os> -->
+<!-- 							<ws>win32</ws> -->
+<!-- 							<arch>x86_64</arch> -->
+<!-- 						</environment> -->
 						<environment>
 							<os>linux</os>
 							<ws>gtk</ws>
@@ -60,8 +60,6 @@
 					</environments>
 				</configuration>
 			</plugin>
-
-
 		</plugins>
 	</build>
 
@@ -72,6 +70,7 @@
 		<module>com.sii.rental.eap</module>
 		<module>com.sii.rental.ui</module>
 		<module>com.sii.rental.feature</module>
+		<module>com.sii.rental.repository</module>
 	</modules>
 
 
