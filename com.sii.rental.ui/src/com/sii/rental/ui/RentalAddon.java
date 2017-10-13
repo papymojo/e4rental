@@ -37,9 +37,9 @@ public class RentalAddon implements RentalUIConstants {
 		for (IExtension ext : exps) {
 			for(IConfigurationElement elt : ext.getConfigurationElements()) {
 				if (elt.getName().equals("fragment")) {
-					System.out.println("fragment found in plugin :" + elt.getAttribute("uri"));
+					System.out.println("fragment found in plugin :" + elt.getAttribute("uri") +" "+ elt.getNamespaceIdentifier());
 				} else if (elt.getName().equals("processor")) {
-					System.out.println("processor found for class :" + elt.getAttribute("class"));
+					System.out.println("processor found for class :" + elt.getAttribute("class") +" "+elt.getNamespaceIdentifier());
 				}
 			}
 		}
